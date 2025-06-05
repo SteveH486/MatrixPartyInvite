@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Path - RSVP</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> <!-- Linking the same stylesheet -->
+</head>
+<body>
+    <!-- Canvas for the digital rain effect -->
+    <canvas id="matrix-rain-canvas"></canvas>
+
+    <div class="overlay-content">
+        <header class="main-header">
+            <h1 class="glitch" data-text="CONNECTION ESTABLISHED: RSVP">CONNECTION ESTABLISHED: RSVP</h1>
+        </header>
+
+        <main class="invite-container page-rsvp">
+            <section class="rsvp-form-container">
+                <h2 class="section-title">// TRANSMIT YOUR RESPONSE //</h2>
+                <!-- IMPORTANT: Update the action attribute with YOUR Formspree endpoint -->
+                <form id="matrixRsvpForm" action="https://formspree.io/f/xeokovrw" method="POST">
+                    <div class="form-group">
+                        <label for="guestName" class="form-label">&gt; IDENTIFIER (NAME):</label>
+                        <input type="text" id="guestName" name="guestName" class="matrix-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="guestEmail" class="form-label">&gt; SECURE CHANNEL (EMAIL):</label>
+                        <input type="email" id="guestEmail" name="steve@smtahunter.com" class="matrix-input" required> <!-- Formspree uses _replyto for email -->
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">&gt; WILL YOU ANSWER THE CALL?</label>
+                        <div class="radio-group">
+                            <label class="matrix-radio-label">
+                                <input type="radio" name="attendance" value="yes" class="matrix-radio" required>
+                                <span class="custom-radio"></span> Accept Transmission (Yes)
+                            </label>
+                            <label class="matrix-radio-label">
+                                <input type="radio" name="attendance" value="no" class="matrix-radio" required>
+                                <span class="custom-radio"></span> Decline Connection (No)
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="guestCount" class="form-label">&gt; ADDITIONAL AGENTS (GUESTS +1, +2, etc.):</label>
+                        <input type="number" id="guestCount" name="additionalAgents" class="matrix-input" min="0" value="0">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message" class="form-label">&gt; ENCRYPTED MESSAGE (OPTIONAL):</label>
+                        <textarea id="message" name="message" class="matrix-textarea" rows="3"></textarea>
+                    </div>
+                    
+                    <!-- Optional: Add a subject line for the emails Formspree sends you -->
+                    <input type="hidden" name="_subject" value="New Matrix Party RSVP!">
+
+                    <div class="form-actions">
+                        <button type="submit" class="matrix-button">Transmit RSVP &gt;</button>
+                    </div>
+                </form>
+                <div id="form-status-message" class="form-status"></div>
+            </section>
+
+            <nav class="page-navigation">
+                <a href="details.html" class="matrix-button">&lt; Review Intel</a>
+                <a href="index.html" class="matrix-button">Return to Entry Point &gt;</a>
+            </nav>
+        </main>
+
+        <footer class="main-footer">
+            <p>&copy; [Your Name/Event Name Here] - Next Year // RSVP Construct</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script> <!-- Linking the same script -->
+</body>
+</html>

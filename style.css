@@ -1,0 +1,404 @@
+/* style.css - Matrix Theme Foundation */
+
+/* --- Global Resets and Base Styles --- */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Hide scrollbars as rain will be full screen */
+    background-color: #000000; /* The void */
+    color: #00FF00; /* Classic Matrix green */
+    font-family: 'VT323', monospace; /* Pixel/Matrix style font */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* --- Digital Rain Canvas --- */
+#matrix-rain-canvas {
+    position: fixed; /* Stick to the background */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Behind content, but above body background */
+    opacity: 0.3; /* Make it a bit subtle so text is readable */
+}
+
+/* --- Overlay Content Wrapper --- */
+.overlay-content {
+    position: relative; /* To ensure it's on top of the canvas */
+    z-index: 2; /* Above the rain canvas */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Push header to top, footer to bottom */
+    height: 90vh; /* Use most of the viewport height */
+    max-width: 800px; /* Limit width for better readability */
+    margin: auto;
+    overflow-y: auto; /* Allow scrolling for content longer than viewport */
+}
+
+/* --- Header --- */
+.main-header {
+    margin-bottom: 2em;
+}
+
+.main-header h1 {
+    font-size: 2.5rem; /* Responsive font size */
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #39FF14; /* Brighter green for emphasis */
+    text-shadow: 0 0 5px #39FF14, 0 0 10px #39FF14;
+    margin: 0.5em 0;
+}
+
+/* --- Main Content Area --- */
+.invite-container {
+    flex-grow: 1; /* Allow main content to take available space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center the content vertically */
+}
+
+.intro-message .matrix-text {
+    font-size: 1.2rem; /* Responsive font size */
+    line-height: 1.8;
+    margin: 0.8em 0;
+    opacity: 0.85; /* Slightly faded text */
+}
+
+/* --- Call to Action Button --- */
+.call-to-action {
+    margin-top: 2.5em;
+}
+
+.matrix-button {
+    display: inline-block;
+    padding: 12px 25px;
+    border: 2px solid #00FF00;
+    color: #00FF00;
+    text-decoration: none;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    position: relative; /* For glitch line and hover effects */
+    overflow: hidden; /* To contain pseudo-elements */
+    background-color: rgba(0, 20, 0, 0.5); /* Dark green semi-transparent background */
+    box-shadow: 0 0 8px rgba(0, 255, 0, 0.3), inset 0 0 8px rgba(0, 255, 0, 0.2);
+    margin: 0.5em; /* Add some margin for multiple buttons */
+    cursor: pointer; /* Indicate clickable */
+}
+
+.matrix-button:hover,
+.matrix-button:focus {
+    color: #000000;
+    background-color: #00FF00;
+    box-shadow: 0 0 15px #00FF00, 0 0 25px #00FF00, 0 0 30px #00FF00;
+    text-shadow: none;
+}
+
+.matrix-button span {
+    position: relative;
+    z-index: 2;
+}
+
+/* Glitch line effect on button - can be animated later */
+.matrix-button .glitch-line {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+    background-color: #00FF00;
+    transform: translateY(-50%) scaleX(0);
+    transition: transform 0.4s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+.matrix-button:hover .glitch-line {
+    transform: translateY(-50%) scaleX(1);
+}
+
+
+/* --- Footer --- */
+.main-footer {
+    margin-top: 2em;
+    font-size: 0.9rem;
+    opacity: 0.6;
+}
+
+/* --- Basic Glitch Effect (Placeholder - will be enhanced with JS) --- */
+.glitch {
+    position: relative;
+    /* Basic text shadow for a slight "glow" */
+    text-shadow:
+        -1px -1px 0px rgba(0, 255, 0, 0.5),
+         1px  1px 0px rgba(0, 100, 0, 0.5);
+}
+
+/* More advanced glitch effects would typically use ::before and ::after pseudo-elements
+   and be animated with JavaScript or CSS keyframes. We'll build this out. */
+
+/* --- Styles for Details Page --- */
+.page-details .event-info {
+    text-align: left; /* Align details to the left for readability */
+    background-color: rgba(0, 10, 0, 0.4); /* Slightly darker box for info */
+    padding: 20px;
+    border: 1px solid rgba(0, 255, 0, 0.2);
+    border-radius: 5px;
+    margin-bottom: 2em;
+}
+
+.page-details .section-title { /* Also used by RSVP page */
+    font-size: 1.8rem;
+    color: #39FF14;
+    text-align: center;
+    margin-bottom: 1em;
+    letter-spacing: 1px;
+}
+
+.page-details .info-block {
+    margin-bottom: 1.5em;
+}
+
+.page-details .info-label {
+    font-size: 1.1rem;
+    color: #00FF00;
+    margin-bottom: 0.3em;
+    letter-spacing: 0.5px;
+}
+
+.page-details .matrix-text { /* Re-using class from index for consistency */
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+    margin-left: 1em; /* Indent the actual info */
+}
+
+.page-details .matrix-link {
+    color: #39FF14;
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.page-details .matrix-link:hover {
+    color: #8FFF70;
+    text-shadow: 0 0 5px #39FF14;
+}
+
+/* --- Navigation between pages --- */
+.page-navigation {
+    margin-top: 2em;
+    display: flex;
+    justify-content: space-around; /* Space out nav buttons */
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+}
+
+/* --- Styles for RSVP Page Forms --- */
+.page-rsvp .rsvp-form-container {
+    background-color: rgba(0, 15, 0, 0.5); /* Darker, slightly more opaque background for form area */
+    padding: 25px;
+    border: 1px solid rgba(0, 255, 0, 0.3);
+    border-radius: 8px;
+    max-width: 600px; /* Constrain form width */
+    margin: 0 auto 2em auto; /* Center form and add bottom margin */
+}
+
+.page-rsvp .form-group {
+    margin-bottom: 1.5em;
+    text-align: left;
+}
+
+.page-rsvp .form-label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 0.5em;
+    color: #00FF00;
+    letter-spacing: 0.5px;
+}
+
+.page-rsvp .matrix-input,
+.page-rsvp .matrix-textarea {
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 1px solid #00FF00;
+    border-radius: 4px;
+    color: #00FF00;
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.page-rsvp .matrix-input:focus,
+.page-rsvp .matrix-textarea:focus {
+    outline: none;
+    border-color: #39FF14;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+.page-rsvp .matrix-textarea {
+    resize: vertical; /* Allow vertical resizing, not horizontal */
+    min-height: 60px;
+}
+
+/* Custom Radio Buttons */
+.page-rsvp .radio-group {
+    display: flex;
+    flex-direction: column; /* Stack radio buttons */
+}
+
+.page-rsvp .matrix-radio-label {
+    display: flex; /* Use flex to align custom radio and text */
+    align-items: center;
+    margin-bottom: 0.8em;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #00FF00;
+}
+
+.page-rsvp .matrix-radio { /* Hide the default radio button */
+    opacity: 0;
+    position: absolute;
+}
+
+.page-rsvp .custom-radio {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #00FF00;
+    border-radius: 50%; /* Make it circular */
+    margin-right: 10px;
+    display: inline-block;
+    position: relative;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.page-rsvp .matrix-radio:checked + .custom-radio {
+    background-color: #00FF00; /* Green fill when checked */
+    border-color: #39FF14;
+}
+
+.page-rsvp .matrix-radio:checked + .custom-radio::after { /* Inner dot */
+    content: '';
+    position: absolute;
+    top: 4px; /* Adjust for centering */
+    left: 4px; /* Adjust for centering */
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #000000; /* Black dot inside */
+}
+
+.page-rsvp .matrix-radio:focus + .custom-radio {
+    box-shadow: 0 0 8px rgba(0, 255, 0, 0.4);
+}
+
+
+.page-rsvp .form-actions {
+    text-align: center; /* Center the submit button */
+    margin-top: 2em;
+}
+
+.page-rsvp .form-status {
+    margin-top: 1.5em;
+    padding: 10px;
+    font-size: 1rem;
+    text-align: center;
+    border-radius: 4px;
+    display: none; /* Hidden by default */
+}
+
+.page-rsvp .form-status.success {
+    background-color: rgba(0, 50, 0, 0.8);
+    border: 1px solid #00FF00;
+    color: #39FF14;
+    display: block;
+}
+
+.page-rsvp .form-status.error {
+    background-color: rgba(50, 0, 0, 0.8);
+    border: 1px solid #FF0000;
+    color: #FF6666;
+    display: block;
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .main-header h1 {
+        font-size: 2rem;
+    }
+    .intro-message .matrix-text,
+    .page-details .matrix-text {
+        font-size: 1rem;
+    }
+    .matrix-button {
+        font-size: 1.1rem;
+        padding: 10px 20px;
+    }
+    .page-details .section-title,
+    .page-rsvp .section-title {
+        font-size: 1.5rem;
+    }
+    .page-rsvp .form-label,
+    .page-rsvp .matrix-input,
+    .page-rsvp .matrix-textarea,
+    .page-rsvp .matrix-radio-label {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .overlay-content {
+        padding: 15px;
+        height: auto; /* Allow content to determine height on small screens */
+        min-height: 90vh; /* Still try to fill most of the screen */
+    }
+    .main-header h1 {
+        font-size: 1.6rem;
+    }
+    .intro-message .matrix-text,
+    .page-details .matrix-text {
+        font-size: 0.9rem;
+    }
+    .matrix-button {
+        font-size: 1rem;
+        padding: 10px 15px; /* Adjusted padding */
+        width: calc(100% - 1em); /* Make buttons nearly full width with some side margin */
+        box-sizing: border-box; 
+        margin-left: 0.5em;
+        margin-right: 0.5em;
+    }
+    .main-footer {
+        font-size: 0.8rem;
+    }
+    .page-details .event-info,
+    .page-rsvp .rsvp-form-container {
+        padding: 15px;
+    }
+    .page-details .section-title,
+    .page-rsvp .section-title {
+        font-size: 1.3rem;
+    }
+     .page-navigation {
+        flex-direction: column; /* Stack nav buttons vertically */
+        align-items: center;
+    }
+    .page-navigation .matrix-button {
+        width: calc(100% - 1em); /* Ensure nav buttons are also nearly full-width */
+        margin-bottom: 10px; 
+    }
+    .page-rsvp .rsvp-form-container {
+        width: 95%; /* Ensure form is not edge-to-edge */
+    }
+    .page-rsvp .form-label,
+    .page-rsvp .matrix-input,
+    .page-rsvp .matrix-textarea,
+    .page-rsvp .matrix-radio-label {
+        font-size: 0.85rem;
+    }
+}
